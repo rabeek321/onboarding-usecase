@@ -1,1 +1,72 @@
-<p>admin works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="container shadow accountsummary">
+        <div id="products" class="row view-group pt-4">
+          <div
+            class="item col-xs-4 col-lg-4 list-group-item"
+            *ngIf="userDetails?.length == 0"
+          >
+            <div class="thumbnail card p-1 text-center">
+              No Contributors
+            </div>
+          </div>
+          <div
+            class="item col-xs-4 col-lg-4 list-group-item"
+            *ngFor="let user of userDetails"
+          >
+            <div class="thumbnail card p-1">
+              <div class="img-event">
+                <img
+                  class="group list-group-image img-fluid"
+                  src="https://ui-avatars.com/api/?name={{
+                    user.userName
+                  }}=28a745"
+                  alt=""
+                />
+              </div>
+              <div class="caption card-body p-2">
+                <div class="row patientinfo">
+                  <div class="col-6">
+                    <h6 class="group card-title inner list-group-item-heading">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      {{ user.userName }}
+                    </h6>
+                  </div>
+                  <div class="col-6">
+                    <p class="group inner list-group-item-text">
+                      <i class="fa fa-phone-square" aria-hidden="true"></i>
+                      {{ user.mobileNumber }}
+                    </p>
+                  </div>
+                  <div class="col-6">
+                    <p class="group inner list-group-item-text">
+                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                      {{ user.email }}
+                    </p>
+                  </div>
+                  <div class="col-6">
+                    <p class="group inner list-group-item-text">
+                      <i class="fa fa-shield" aria-hidden="true"></i>
+                      {{ user.status }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="img-event">
+                <p>
+                  <button type="text" class="btn btn-primary m-2">
+                    Approve
+                  </button>
+                  <button type="text" class="btn btn-danger m-2">
+                    Reject
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
