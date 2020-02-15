@@ -17,11 +17,13 @@ export class LoginComponent implements OnInit {
     public httpService: HttpService
   ) { }
 
-   /*
-  * @param
-  * Get login form controll access
-  */
- get login() { return this.loginForm.controls; }
+  /*
+   * @param
+   * Get login form controll access
+   */
+  get login() {
+    return this.loginForm.controls;
+  }
 
   /*
    * @param Login Validate
@@ -31,26 +33,31 @@ export class LoginComponent implements OnInit {
   validateLogin() {
     if (this.loginForm.valid) {
       const postObj = {
-        userName: this.loginForm.value.username,
+        uName: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
       // tslint:disable-next-line: deprecation
-      this.httpService.checkLogin(postObj).subscribe(user => {
-        console.log(user);
-        if (user) {
-          const userDetails = {
-            customerName: user.userName,
-            customerId: user.userId
-            // accountNumber: user.accountNumber
-          };
-          this.router.navigate(['/dashboard']);
-          sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
+      this.httpService.checkLogin(postObj).subscribe(
+        user => {
+          console.log(user);
+          if (user) {
+            const userDetails = {
+              customerId: user.userId
+            };
+            this.router.navigate(['/user']);
+            sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
+            this.loader = false;
+          }
+        },
+        error => {
           this.loader = false;
         }
-      }, error => {
-        this.loader = false;
-      });
+      );
     }
+  }
+
+  register() {
+    this.router.navigate(['/register']);
   }
   /*
    * @param create form
@@ -63,9 +70,8 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.createForm();
     // tslint:disable-next-line: max-line-length
     this.elementRef.nativeElement.ownerDocument.body.style.background = 'url(\'https://mobirise.com/extensions/strategyamp/assets/images/mbr-1.jpg\') no-repeat center center fixed';
+    this.createForm();
   }
-
 }

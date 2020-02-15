@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login', pathMatch: 'full'
+    redirectTo: 'login', pathMatch: 'full'
   },
   {
     path: 'register',
@@ -21,8 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import(`./components/user/user.module`).then(m => m.UserModule),
-    canActivate: [AuthGuardService]
+    loadChildren: () => import(`./components/user/user.module`).then(m => m.UserModule)
+    // canActivate: [AuthGuardService]
   },
 ];
 
