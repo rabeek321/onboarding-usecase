@@ -11,13 +11,22 @@ margin-bottom: 5%;">
                         <div class="card-body">
                             <form [formGroup]="registerForm" (ngSubmit)="submitBoarding();">
                                 <div class="form-group text-left">
-                                    <label for="email" class="links">Name<span
-                                            class="required">*</span></label>
+                                    <label for="email" class="links">User name<span class="required">*</span></label>
                                     <input type="text" formControlName="username" class="form-control"
                                         placeholder="Enter User name" required>
                                     <div *ngIf="register.username.touched && register.username.invalid" class="error">
                                         <div *ngIf="register.username.errors && register.username.errors.required ">
                                             Name is <strong>required</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-left">
+                                    <label for="password" class="links">Password<span class="required">*</span></label>
+                                    <input type="password" formControlName="password" class="form-control"
+                                        placeholder="Enter Password" required>
+                                    <div *ngIf="register.password.touched && register.password.invalid" class="error">
+                                        <div *ngIf="register.password.errors && register.password.errors.required ">
+                                            Password is <strong>required</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -64,20 +73,20 @@ margin-bottom: 5%;">
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
-                                    <label for="email" class="links">Designation<span
-                                            class="required">*</span></label>
+                                    <label for="email" class="links">Designation<span class="required">*</span></label>
                                     <input type="text" formControlName="designation" class="form-control"
                                         placeholder="Enter Designation" required>
-                                    <div *ngIf="register.designation.touched && register.designation.invalid" class="error">
-                                        <div *ngIf="register.designation.errors && register.designation.errors.required ">
+                                    <div *ngIf="register.designation.touched && register.designation.invalid"
+                                        class="error">
+                                        <div
+                                            *ngIf="register.designation.errors && register.designation.errors.required ">
                                             Designation is <strong>required</strong>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
                                     <label for="email" class="links">Role<span class="required">*</span></label>
-                                    <select class="form-control" id="exampleFormControlSelect2"
-                                        formControlName="role">
+                                    <select class="form-control" id="exampleFormControlSelect2" formControlName="role">
                                         <option value="">Choose Role</option>
                                         <option value="Employee">Employee</option>
                                         <option value="Admin">Admin</option>
@@ -88,12 +97,13 @@ margin-bottom: 5%;">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+                                <button type="submit" [disabled]="registerForm.invalid"
+                                    class="btn btn-primary">Register</button>
                             </form>
                         </div>
                         <div class="card-footer text-muted">
                             <a href="javascript:void(0);" (click)="login();" class="btn btn-primary">Login</a>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,6 +112,3 @@ margin-bottom: 5%;">
 </section>
 <app-loader [loader]="loader"></app-loader>
 <app-alert [sharedAlert]="httpService.showAlert" *ngIf="httpService.showAlert?.modalShow"></app-alert>
-
-
-

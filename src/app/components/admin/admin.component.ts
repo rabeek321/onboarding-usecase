@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { UserDetails } from '../../models/models';
 
 @Component({
@@ -8,9 +8,12 @@ import { UserDetails } from '../../models/models';
 })
 export class AdminComponent implements OnInit {
   userDetails: UserDetails[];
-  constructor() { }
+  constructor(
+    private elementRef: ElementRef
+  ) { }
 
   ngOnInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.background = '';
     this.userDetails = [
       {
         userName: 'jeyakumar',
@@ -26,7 +29,7 @@ export class AdminComponent implements OnInit {
         email: 'rabeek@live.com',
         designation: 'Software Engineer',
         role: 'admin',
-        status: 'Approved'
+        status: 'pending'
       }
     ];
   }

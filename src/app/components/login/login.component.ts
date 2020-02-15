@@ -36,23 +36,24 @@ export class LoginComponent implements OnInit {
         uName: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
+      this.router.navigate(['/user']);
       // tslint:disable-next-line: deprecation
-      this.httpService.checkLogin(postObj).subscribe(
-        user => {
-          console.log(user);
-          if (user) {
-            const userDetails = {
-              customerId: user.userId
-            };
-            this.router.navigate(['/user']);
-            sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
-            this.loader = false;
-          }
-        },
-        error => {
-          this.loader = false;
-        }
-      );
+      // this.httpService.checkLogin(postObj).subscribe(
+      //   user => {
+      //     console.log(user);
+      //     if (user) {
+      //       const userDetails = {
+      //         customerId: user.userId
+      //       };
+      //       this.router.navigate(['/user']);
+      //       sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
+      //       this.loader = false;
+      //     }
+      //   },
+      //   error => {
+      //     this.loader = false;
+      //   }
+      // );
     }
   }
 

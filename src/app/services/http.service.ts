@@ -27,22 +27,22 @@ export class HttpService {
   * POST Method
   * Type Object
   */
- checkLogin(data): Observable<any> {
-  return this.http.post(this.apiURL, data, this.httpOptions).pipe(
-    catchError(this.errorHandler.bind(this))
-  );
+  checkLogin(): Observable<any> {
+    return this.http.get(`${this.apiURL}/login`, this.httpOptions).pipe(
+      catchError(this.errorHandler.bind(this))
+    );
   }
- /*
-  * @param data
-  * Validate Login API
-  * POST Method
-  * Type Object
-  */
- onBoarding(data): Observable<any> {
-  return this.http.post(this.apiURL, data, this.httpOptions).pipe(
-    catchError(this.errorHandler.bind(this))
-  );
-}
+  /*
+   * @param data
+   * Validate Login API
+   * POST Method
+   * Type Object
+   */
+  onBoarding(data): Observable<any> {
+    return this.http.post(this.apiURL, data, this.httpOptions).pipe(
+      catchError(this.errorHandler.bind(this))
+    );
+  }
   /*
      * @param error
      * Error Handling
