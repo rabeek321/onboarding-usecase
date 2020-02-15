@@ -63,3 +63,11 @@ export interface ContributorDetails {
         panNumber: string;
 }
 
+export interface UserDetails {
+        userName: string;
+        email: string;
+        mobileNumber: string;
+        designation: string;
+        role: string;
+        status: string;
+}
