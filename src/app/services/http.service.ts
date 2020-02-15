@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 export class HttpService {
   apiURL = environment.apiUrl;
   showAlert;
-  
   constructor(private http: HttpClient) {
   }
 
@@ -24,36 +23,15 @@ export class HttpService {
 
   /*
   * @param data
+  * Validate Login API
   * POST Method
   * Type Object
-  * return Type Observable<any>
   */
-  createData(url, body) {
-    return this.http.post(url, body, this.httpOptions).pipe(
-      catchError(this.errorHandler.bind(this))
-    );
-  }
-
-   /*
-  * @param data
-  * GET Method
-  * Type Object
-  * return Type Observable<any>
-  */
-  readData(url) {
-    return this.http.get(url).pipe(
-      catchError(this.errorHandler.bind(this))
-    );
-  }
-
-
-  updateData() {
-
-  }
-
-  delteData() { }
-
-
+ checkLogin(data): Observable<any> {
+  return this.http.post(this.apiURL, data, this.httpOptions).pipe(
+    catchError(this.errorHandler.bind(this))
+  );
+}
   /*
      * @param error
      * Error Handling
